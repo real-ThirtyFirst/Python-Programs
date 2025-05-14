@@ -15,24 +15,30 @@ def bubble_sort(arr):
             print(f"Pass {i + 1}: {arr}")
     if swapped_once:
         print("Finished Sorting")
-        return arr
     if not swapped:
         print("Already Sorted")
-        return arr
-    else:
-        return arr
+    return arr
 
 def insertion_sort(arr):
     print("\n--- Insertion Sort ---")
-    for i in range(1, len(arr)):
+    n = len(arr)
+    swapped_once = False
+    for i in range(1, n):
         key = arr[i]
         j = i - 1
-        print(f"Pass {i}: ", end="")
+        swapped = False
         while j >= 0 and key < arr[j]:
             arr[j + 1] = arr[j]
             j -= 1
+            swapped = True
+            swapped_once = True
         arr[j + 1] = key
-        print(arr)
+        if swapped:
+            print(f"Pass {i}: {arr}")
+    if not swapped_once:
+        print("Already Sorted")
+    else:
+        print("Finished Sorting")
     return arr
 
 def selection_sort(arr):
