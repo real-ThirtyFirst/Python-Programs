@@ -1,13 +1,26 @@
 def bubble_sort(arr):
     print("\n--- Bubble Sort ---")
     n = len(arr)
+    swapped_once = False
+    swapped = False
     for i in range(n - 1):
-        print(f"Pass {i + 1}: ", end="")
         for j in range(n - 1 - i):
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        print(arr)
-    return arr
+                swapped = True
+                swapped_once = True
+        if not swapped:
+            continue
+        else:
+            print(f"Pass {i + 1}: {arr}")
+    if swapped_once:
+        print("Finished Sorting")
+        return arr
+    if not swapped:
+        print("Already Sorted")
+        return arr
+    else:
+        return arr
 
 def insertion_sort(arr):
     print("\n--- Insertion Sort ---")
@@ -80,4 +93,4 @@ elif choice == '2':
 elif choice == '3':
     selection_sort(to_sort)
 
-print("\nFinal sorted array:", to_sort)
+print("\nFinal Sorted Array:", to_sort)
