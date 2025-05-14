@@ -43,13 +43,21 @@ def insertion_sort(arr):
 
 def selection_sort(arr):
     print("\n--- Selection Sort ---")
+    swapped_once = False
+
     for i in range(len(arr)):
         min_idx = i
         for j in range(i + 1, len(arr)):
             if arr[j] < arr[min_idx]:
                 min_idx = j
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
-        print(f"Pass {i + 1}: {arr}")
+        if min_idx != i:
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+            swapped_once = True
+            print(f"Pass {i + 1}: {arr}")
+    if not swapped_once:
+        print("Already Sorted")
+    else:
+        print("Finished Sorting")
     return arr
 
 # Input with validation
@@ -64,17 +72,21 @@ while True:
         print("Please enter a valid integer.")
 
 arr = []
-for i in range(size):
+
+for i in range(int(size)):
     while True:
         try:
-            num = int(input(f"Enter element {i + 1} (1-100): "))
+            num = float(input(f"Enter element {i + 1} (1-100): "))
             if 1 <= num <= 100:
-                arr.append(num)
+                if num.is_integer():
+                    arr.append(int(num))
+                else:
+                    arr.append(num)
                 break
             else:
                 print("Number must be between 1 and 100.")
         except ValueError:
-            print("Please enter a valid integer.")
+            print("Please enter a valid number.")
 
 # Ask user which sort to use
 print("\nChoose sorting algorithm:")
