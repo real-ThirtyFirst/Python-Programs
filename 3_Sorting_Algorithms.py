@@ -12,7 +12,7 @@ def bubble_sort(arr):
         if not swapped:
             continue
         else:
-            print(f"Pass {i + 1}: {arr}")
+            print(f"Pass {i}: {arr}")
     if swapped_once:
         print("Finished Sorting")
     if not swapped:
